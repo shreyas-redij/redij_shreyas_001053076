@@ -27,7 +27,7 @@ public class AbnormalJPanel extends javax.swing.JPanel {
         this.vsh = vsh;
         this.maxBP=maxBP;
         this.minBP=minBP;
-        //populateTable();
+        populateTable();
         
        /* tempTextField.setEnabled(false);
         bloodTextField.setEnabled(false);
@@ -256,7 +256,7 @@ public class AbnormalJPanel extends javax.swing.JPanel {
             VitalSigns vs = (VitalSigns) vitalSignsTable.getValueAt(selectedRow, 0);
             vsh.deleteVital(vs);
             JOptionPane.showMessageDialog(null, "Vital Sign deleted.");
-            //populateTable();
+            populateTable();
         } else {
             JOptionPane.showMessageDialog(null, "Please select a row.");
         }
@@ -266,7 +266,7 @@ public class AbnormalJPanel extends javax.swing.JPanel {
         dateTextField.setText("");
     }//GEN-LAST:event_deleteButtonActionPerformed
     
-   /* private void populateTable() {
+    private void populateTable() {
         DefaultTableModel dtm = (DefaultTableModel) vitalSignsTable.getModel();
         dtm.setRowCount(0);
         for (VitalSigns vs : vsh.getVitalSignHistory()) {
@@ -279,7 +279,7 @@ public class AbnormalJPanel extends javax.swing.JPanel {
             dtm.addRow(row);
         }
        }
-    }*/
+    }
     
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
@@ -382,7 +382,7 @@ public class AbnormalJPanel extends javax.swing.JPanel {
             String date = dateTextField.getText();
             v.setDate(date);
 
-            //populateTable();
+            populateTable();
             JOptionPane.showMessageDialog(null, "Virtual Signs Updated successfully!");
             setAllEnabled(false);
 
