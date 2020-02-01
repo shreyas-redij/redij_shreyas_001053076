@@ -29,10 +29,10 @@ public class AbnormalJPanel extends javax.swing.JPanel {
         this.minBP=minBP;
         populateTable();
         
-       /* tempTextField.setEnabled(false);
+       tempTextField.setEnabled(false);
         bloodTextField.setEnabled(false);
         pulseTextField.setEnabled(false);
-        dateTextField.setEnabled(false);*/
+        dateTextField.setEnabled(false);
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
