@@ -140,13 +140,28 @@ public class CreateProductJPanel extends javax.swing.JPanel {
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
         
+        String prodName = "";
+            try{
+                 String temp = txtProdName.getText();
+                    if(temp.length()== 0){                        
+                    throw new RuntimeException("Please enter Prod Name");
+                    
+                }
+                    else{
+                        prodName = temp;
+                    }
+            }catch(RuntimeException e){
+                JOptionPane.showMessageDialog(null,e.getMessage());
+                return;
+                }
+        
         String priceText = txtPrice.getText();
         double price =0;
         try
         {
             price =Double.parseDouble(priceText);
         }catch(NumberFormatException e){
-            e.printStackTrace();
+            //e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Please Enter Valid Price");
             return;
         }
@@ -158,15 +173,23 @@ public class CreateProductJPanel extends javax.swing.JPanel {
            {
                availability =  Integer.parseInt(txtAvailablity.getText());
            }catch(NumberFormatException e){
-                e.printStackTrace();
+                //e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Please Enter valid  availability");
                return;
            }          
             
+           if(prodDir.getProductDirectory().size()>=0){
+                for(Product p : prodDir.getProductDirectory()) {
+                 if (p.getName().equals(txtProdName.getText())) {
+                 JOptionPane.showMessageDialog(null, "Please Enter valid name as user already exist");
+                    return;
+                }
+            }
+           }
            
             Integer.parseInt(txtAvailablity.getText());
             Product prod = prodDir.addProduct();
-            prod.setName(txtProdName.getText());
+            prod.setName(prodName);
             prod.setAvailNum(availability);
             prod.setPrice(price);
             prod.setDescription(txtDescription.getText());

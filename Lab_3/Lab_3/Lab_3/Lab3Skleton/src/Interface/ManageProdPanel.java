@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import java.awt.CardLayout;
+import java.util.ArrayList;
 
 /**
  *
@@ -45,7 +46,7 @@ public class ManageProdPanel extends javax.swing.JPanel {
         
     }
     // Binding the data to the corresponding row
-    public void searchProduct(Product p){
+    public void searchProduct(Product p ){
         DefaultTableModel dtm = (DefaultTableModel)tblDirectory.getModel();
         dtm.setRowCount(0);// So that only one data is shown
               
@@ -57,6 +58,20 @@ public class ManageProdPanel extends javax.swing.JPanel {
         
         
     }
+    
+   /* public ArrayList<Product> searchProduct(Product p){
+        ArrayList<Product> searchResult=new ArrayList<Product>();
+        
+        for(Product a : prodDir.getProductDirectory()){
+            if(a.getName().equals(a)){
+                searchResult.add(a);
+            }
+        }
+        return searchResult;
+    }*/
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -225,6 +240,10 @@ public class ManageProdPanel extends javax.swing.JPanel {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
+        
+        DefaultTableModel dtm = (DefaultTableModel)tblDirectory.getModel();
+        dtm.setRowCount(0);// So that only one data is shown
+        
         for(Product p : this.prodDir.getProductDirectory()) {
         if (p.getName().equals(txtsearch.getText())) {
             searchProduct(p);
