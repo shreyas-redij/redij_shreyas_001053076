@@ -171,7 +171,7 @@ public class ViewPanel extends javax.swing.JPanel {
             btnUpdate.setEnabled(false);
         
     }//GEN-LAST:event_btnUpdateActionPerformed
-
+    // This is used to perform save 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
             txtAvailablity.setEditable(false);
