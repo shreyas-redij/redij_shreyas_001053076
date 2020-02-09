@@ -204,14 +204,14 @@ public class ViewPanel extends javax.swing.JPanel {
                return;
            }  
            
-           if(prodDir.getProductDirectory().size()>=0){
+           /*if(prodDir.getProductDirectory().size()>=0){
                 for(Product p : prodDir.getProductDirectory()) {
                  if (p.getName().equals(txtProdName.getText())) {
                  JOptionPane.showMessageDialog(null, "Please Enter valid name as user already exist");
                     return;
                 }
             }
-           }
+           }*/
         
             product.setName(txtProdName.getText());
            // product.setPrice(Double.parseDouble(txtPrice.getText()));
