@@ -25,6 +25,7 @@ public class ViewPanel extends javax.swing.JPanel {
     private ProductDirectory prodDir;
     private Product product;
     private JPanel panel;
+    private String temp;
     ViewPanel(ProductDirectory prodDir, JPanel panel, Product prod ) {
         initComponents();
         this.product=prod;
@@ -35,6 +36,7 @@ public class ViewPanel extends javax.swing.JPanel {
         txtProdName.setText(prod.getName());
         txtDesc.setText(prod.getDescription());
         
+        temp=prod.getName();
     }
 
     /**
@@ -180,6 +182,19 @@ public class ViewPanel extends javax.swing.JPanel {
             txtDesc.setEnabled(false);
             btnSave.setEnabled(false);
             btnUpdate.setEnabled(true);
+            
+            if(!txtProdName.getText().equals(temp)){
+                              
+                    if(prodDir.getProductDirectory().size()>=0){
+                    for(Product p : prodDir.getProductDirectory()) {
+                     if (p.getName().equals(txtProdName.getText())) {
+                     JOptionPane.showMessageDialog(null, "Please Enter valid name as user already exist");
+                        return;
+                    }
+                }
+               
+            }
+          }
             
             String priceText = txtPrice.getText();
         double price =0;
