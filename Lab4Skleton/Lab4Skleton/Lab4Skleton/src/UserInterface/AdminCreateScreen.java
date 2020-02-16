@@ -167,13 +167,7 @@ public class AdminCreateScreen extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Username can't be invalid!!");
             return;
         }
-        if(!usernamePatternCorrect())
-        {
-            txtUser.setBorder(BorderFactory.createLineBorder(Color.RED));
-            jLabel1.setForeground(Color.red);
-            JOptionPane.showMessageDialog(null, "Username should be in the form of XXX_XXX@xxx.com");
-            return;
-        }
+        
         if(pass==null || pass.equals(""))
         {
             txtPword.setBorder(BorderFactory.createLineBorder(Color.RED));
@@ -185,8 +179,15 @@ public class AdminCreateScreen extends javax.swing.JPanel {
             txtPword.setBorder(BorderFactory.createLineBorder(Color.RED));
             jLabel2.setForeground(Color.RED);
             JOptionPane.showMessageDialog(null, "Password should be atleast 6 digits"
-                    + " and a combination of number,uppercase letter,"
-                    + "lower case letter and a special character $*#&");
+                    + " and a combination of uppercase letter, number lower case letter and a special character $*#&");
+            return;
+        }
+        
+        if(!usernamePatternCorrect())
+        {
+            txtUser.setBorder(BorderFactory.createLineBorder(Color.RED));
+            jLabel1.setForeground(Color.red);
+            JOptionPane.showMessageDialog(null, "Username should be in the form of XXX_XXX@xxx.com");
             return;
         }
         
@@ -207,7 +208,7 @@ public class AdminCreateScreen extends javax.swing.JPanel {
         {
             Date d =new Date();
             admin.getCustDir().getCustomerList().add(new Customer(pass,username,d));
-            JOptionPane.showMessageDialog(null, "Customer login created successfully!!");
+            JOptionPane.showMessageDialog(null, "Customer login  successfully created");
             txtUser.setBorder(BorderFactory.createLineBorder(Color.BLUE));
             txtPword.setBorder(BorderFactory.createLineBorder(Color.BLUE));
             txtRePword.setBorder(BorderFactory.createLineBorder(Color.BLUE));
@@ -220,13 +221,14 @@ public class AdminCreateScreen extends javax.swing.JPanel {
         if(radioSupplier.isSelected())
         {
             admin.getSuppDir().getSupplierList().add(new Supplier(pass, username));
-            JOptionPane.showMessageDialog(null, "Supplier login created successfully!!");
+            JOptionPane.showMessageDialog(null, "Supplier login  successfully created!!");
+            txtRePword.setBorder(BorderFactory.createLineBorder(Color.BLUE));
             txtUser.setBorder(BorderFactory.createLineBorder(Color.BLUE));
             txtPword.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-            txtRePword.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+            jLabel3.setForeground(Color.BLACK);
             jLabel1.setForeground(Color.BLACK);
             jLabel2.setForeground(Color.BLACK);
-            jLabel3.setForeground(Color.BLACK);
+            
         }
         
         txtUser.setText("");
@@ -235,15 +237,17 @@ public class AdminCreateScreen extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnCreateActionPerformed
 
-    private boolean usernamePatternCorrect(){
-         Pattern p = Pattern.compile("^[a-zA-Z0-9]+_[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z0-9]+$");
-         Matcher m = p.matcher(txtUser.getText());
-         boolean b = m.matches();
-         return b;
-     }
+   
      private boolean passwordPatternCorrect(){
          Pattern p = Pattern.compile("^(?=.*[A-Z])(?=.*\\d)(?=.*[$*#&])[A-Za-z\\d$*#&]{6,}$");
          Matcher m =p.matcher(txtPword.getText());
+         boolean b = m.matches();
+         return b;
+     }
+     
+      private boolean usernamePatternCorrect(){
+         Pattern p = Pattern.compile("^[a-zA-Z0-9]+_[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z0-9]+$");
+         Matcher m = p.matcher(txtUser.getText());
          boolean b = m.matches();
          return b;
      }

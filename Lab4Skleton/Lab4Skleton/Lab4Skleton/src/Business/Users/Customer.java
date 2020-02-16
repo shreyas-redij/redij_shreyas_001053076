@@ -26,10 +26,7 @@ public class Customer extends User implements Comparable<Customer>{
     }
   
 
-    @Override
-    public int compareTo(Customer o) {
-        return o.getUserName().compareTo(this.getUserName());
-    }
+    
 
     @Override
     public String toString() {
@@ -40,6 +37,11 @@ public class Customer extends User implements Comparable<Customer>{
         if(password.equals(getPassword()))
             return true;
         return false;
+    }
+    
+    @Override
+    public int compareTo(Customer o) {
+        return o.getUserName().compareTo(this.getUserName());
     }
     
 }
